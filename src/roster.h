@@ -3,7 +3,10 @@
 
 #include "player.h"
 
-typedef std::vector<player_t> roster_t;
+using namespace std;
+
+// Each position has a vector of players at that position
+typedef vector<vector<player_t>> roster_t;
 
 bool is_roster_valid(roster_t &roster);
 bool is_roster_complete(roster_t &roster);
