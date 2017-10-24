@@ -9,9 +9,9 @@ using namespace std;
 
 typedef unordered_map<string, player_t> player_pool_t;
 
-player_pool_t player_pool;
+extern player_pool_t player_pool;
 
-bool player_pool_import(string filename);
+bool player_pool_import(string const &filename);
 void player_pool_filter();
 
 #endif /* PLAYER_POOL_H */
