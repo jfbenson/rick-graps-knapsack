@@ -22,12 +22,13 @@ player_t player_populate(string row)
 
     p.name = parts[0];
 
-    p.position_ids = 0;
-    p.position_ids |= (parts[1].find("PG") != string::npos) ? 1 << P_PG : 0;
-    p.position_ids |= (parts[1].find("SG") != string::npos) ? 1 << P_SG : 0;
-    p.position_ids |= (parts[1].find("SF") != string::npos) ? 1 << P_SF : 0;
-    p.position_ids |= (parts[1].find("PF") != string::npos) ? 1 << P_PF : 0;
-    p.position_ids |= (parts[1].find("C") != string::npos) ? 1 << P_C : 0;
+    p.pos_ids = 0;
+    p.pos_ids |= (parts[1].find("PG") != string::npos) ? P_PG : 0;
+    p.pos_ids |= (parts[1].find("SG") != string::npos) ? P_SG : 0;
+    p.pos_ids |= (parts[1].find("SF") != string::npos) ? P_SF : 0;
+    p.pos_ids |= (parts[1].find("PF") != string::npos) ? P_PF : 0;
+    p.pos_ids |= (parts[1].find("C") != string::npos) ? P_C : 0;
+
 
     istringstream sal(parts[3]);
     sal.imbue(locale("en_US.UTF-8"));
@@ -41,7 +42,7 @@ player_t player_populate(string row)
 void player_print(player_t &p)
 {
     cout << p.name;
-    cout << "\t" << bitset<16>((int)p.position_ids);
+    cout << "\t" << bitset<5>((int)p.pos_ids);
     cout << "\t" << p.salary;
     cout << "\t" << p.proj_pts << endl;
 }
